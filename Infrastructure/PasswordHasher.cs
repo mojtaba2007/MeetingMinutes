@@ -10,8 +10,8 @@ namespace MeetingMinutes.Infrastructure
     /// </summary>
     public static class PasswordHasher
     {
-        private const int SaltSize = 16;   // بایت (ستون PasswordSalt تا 32 بایت را می‌پذیرد)
-        private const int HashSize = 32;   // بایت (ستون PasswordHash تا 64 بایت را می‌پذیرد)
+        private const int SaltSize = 16;
+        private const int HashSize = 32;
         private const int MinIterations = 100000;
 
         public static int DefaultIterations
@@ -37,7 +37,7 @@ namespace MeetingMinutes.Infrastructure
             var test = Derive(password, salt, iterations);
             if (hash == null || hash.Length != test.Length) return false;
             int diff = 0;
-            for (int i = 0; i < test.Length; i++) diff |= test[i] ^ hash[i];   // مقایسه‌ی زمان‌ثابت
+            for (int i = 0; i < test.Length; i++) diff |= test[i] ^ hash[i];
             return diff == 0;
         }
 

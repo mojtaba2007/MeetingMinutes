@@ -277,6 +277,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}
  .print-watermark.cancelled{color:rgba(163,45,45,.2);border-color:rgba(163,45,45,.2)}
 }
 .mobile-only{display:none}.overlay{display:none}
+.noner{width: 100px;direction: ltr;}
 @media(max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2,.detail-grid{grid-template-columns:minmax(0,1fr)}.sidebar{width:145px}.info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){.topbar{padding:0 12px}.mobile-only{display:inline-flex}.brand span{display:none}.user-chip>div:last-child{display:none}.noner{display:none}
 .sidebar{position:fixed;right:0;top:64px;transform:translateX(100%);transition:.2s;width:230px;z-index:60}.sidebar.open{transform:translateX(0)}

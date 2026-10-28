@@ -21,7 +21,7 @@ namespace MeetingMinutes
             catch (Exception ex) when (ex is SqlException || ex is System.Configuration.ConfigurationErrorsException)
             {
                 System.Diagnostics.Debug.WriteLine("[Setup Error] " + ex.Message);
-                ShowMessage("اتصال به دیتابیس برقرار نشد. رشته‌ی اتصال «MeetingDb» در Web.config را بررسی کنید.");
+                ShowMessage("اتصال به دیتابیس برقرار نشد. متغیر MEETINGMINUTES_CONNECTION_STRING یا رشته‌ی اتصال MeetingDb در Web.config را بررسی کنید.");
                 btnCreate.Enabled = false;
             }
         }

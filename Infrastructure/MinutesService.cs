@@ -5,12 +5,8 @@ using System.Data.SqlClient;
 
 namespace MeetingMinutes.Infrastructure
 {
-    /// <summary>موضوعات، مصوبات و اقدام‌های یک جلسه. همه‌ی تغییرها فقط روی جلسه‌ی قفل‌نشده مجازند.</summary>
     public static class MinutesService
     {
-        // ======================================================================
-        // خواندن
-        // ======================================================================
 
         /// <summary>موضوعات به‌صورت فهرست تخت و مرتب (والد، سپس زیرموضوع‌هایش) با شماره‌ی 3 یا 3-1.</summary>
         public static DataTable TopicsFlat(int meetingId, bool includeLoose)
@@ -148,9 +144,7 @@ namespace MeetingMinutes.Infrastructure
             return people;
         }
 
-        // ======================================================================
         // جمع‌بندی رئیس جلسه
-        // ======================================================================
         public static bool SaveChairSummary(int meetingId, string text, int userId, out string error)
         {
             if (!MeetingService.IsEditable(meetingId, out error)) return false;
@@ -159,9 +153,7 @@ namespace MeetingMinutes.Infrastructure
             return true;
         }
 
-        // ======================================================================
         // موضوعات
-        // ======================================================================
         public static bool SaveTopic(int meetingId, int? topicId, string title, string discussion, int? parentId,
                                      out int savedId, out string error)
         {
@@ -237,9 +229,7 @@ namespace MeetingMinutes.Infrastructure
             return true;
         }
 
-        // ======================================================================
         // مصوبات
-        // ======================================================================
         public static bool SaveDecision(int meetingId, int? decisionId, int? topicId, string text, out int savedId, out string error)
         {
             savedId = decisionId ?? 0;
@@ -281,7 +271,6 @@ namespace MeetingMinutes.Infrastructure
         public static bool DeleteDecision(int meetingId, int decisionId, out string error)
         {
             if (!MeetingService.IsEditable(meetingId, out error)) return false;
-            // اقدام‌ها و سوابق پیگیری آن با CASCADE پاک می‌شوند
             int n = Db.Execute("DELETE dbo.Decisions WHERE DecisionId = @d AND MeetingId = @m", Db.P("@d", decisionId), Db.P("@m", meetingId));
             if (n == 0) { error = "مصوبه یافت نشد."; return false; }
             return true;
@@ -361,9 +350,7 @@ namespace MeetingMinutes.Infrastructure
             return true;
         }
 
-        // ======================================================================
         // اقدام‌ها
-        // ======================================================================
         public static bool SaveAction(int meetingId, int? actionId, int decisionId, string title, int? personId, int? unitId,
                                       string note, DateTime? dueDate, string dueText, int statusId, int userId, out string error)
         {
@@ -432,9 +419,7 @@ namespace MeetingMinutes.Infrastructure
             return true;
         }
 
-        // ======================================================================
         // کمکی
-        // ======================================================================
         private static int Exec(SqlConnection con, SqlTransaction tx, string sql, params SqlParameter[] ps)
         {
             using (var c = new SqlCommand(sql, con, tx))

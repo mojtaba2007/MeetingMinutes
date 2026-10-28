@@ -8,7 +8,7 @@ namespace MeetingMinutes
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
-            Load();
+            LoadProfile();
             switch (Request.QueryString["saved"])
             {
                 case "1": litMessage.Text = Alert("اطلاعات شما ذخیره شد.", "alert-success"); break;
@@ -17,7 +17,7 @@ namespace MeetingMinutes
             }
         }
 
-        private void Load()
+        private void LoadProfile()
         {
             var p = ProfileService.Get(CurrentUser.UserId);
             if (p == null) return;   // اتفاق نمی‌افتد مگر کاربر همین لحظه حذف شده باشد

@@ -9,10 +9,10 @@ namespace MeetingMinutes
         {
             RequireRole(RoleCodes.Admin);
             if (IsPostBack) return;
-            Load();
+            LoadSettings();
         }
 
-        private void Load()
+        private void LoadSettings()
         {
             var s = SettingsService.Get();
             txtOrgName.Text = s.OrgName;
@@ -33,7 +33,7 @@ namespace MeetingMinutes
             if (SettingsService.Save(txtOrgName.Text, txtPrefix.Text, chkOverdue.Checked, CurrentUser.UserId, out error))
             {
                 litMessage.Text = Alert("تنظیمات ذخیره شد.", "alert-success");
-                Load();
+                LoadSettings();
             }
             else
             {

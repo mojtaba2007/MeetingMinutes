@@ -76,7 +76,7 @@ namespace MeetingMinutes.Infrastructure
             Db.Execute("UPDATE dbo.OrgUnits SET IsActive = @a WHERE OrgUnitId = @id", Db.P("@a", active), Db.P("@id", id));
         }
 
-        // --- حذف ---
+        // حذف
         /// <summary>حذف واقعی فقط وقتی مجاز است که این واحد در هیچ‌جای دیگر دیتابیس استفاده نشده باشد.</summary>
         public static bool CanDelete(int unitId, out string reason)
         {

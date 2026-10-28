@@ -11,11 +11,11 @@ namespace MeetingMinutes
 {
     public class NavItem
     {
-        public string Section { get; set; }    // عنوان گروه در منوی کناری
+        public string Section { get; set; }
         public string Title { get; set; }
-        public string Url { get; set; }        // مثل ~/Pages/Meetings.aspx
-        public string Icon { get; set; }       // نام آیکن Tabler
-        public string[] Roles { get; set; }    // null = همه‌ی نقش‌ها
+        public string Url { get; set; }
+        public string Icon { get; set; }
+        public string[] Roles { get; set; }
     }
 
     public partial class SiteMaster : System.Web.UI.MasterPage
@@ -129,7 +129,6 @@ namespace MeetingMinutes
             litNav.Text = sb.ToString();
         }
 
-        // حرف اول آخرین کلمه‌ی نام (تا «دکتر» و «مهندس» همه را «د/م» نکند)
         private static string Initial(string name)
         {
             if (string.IsNullOrWhiteSpace(name)) return "؟";

@@ -14,7 +14,7 @@
 <form id="form1" runat="server">
     <header class="topbar">
         <button type="button" class="icon-btn mobile-only" id="menuToggle" aria-label="منو"><i class="ti ti-menu-2"></i></button>
-        <a href="Default.aspx" class="page-title"><div class="brand"><img src="/content/logo.png" alt="logo" style="width:7%;"/><asp:Literal ID="litOrgName" runat="server" Mode="Encode" /></div></a>
+        <a runat="server" href="~/Pages/Default.aspx" class="page-title"><div class="brand"><img runat="server" src="~/Content/Global.png" alt="logo" style="width:7%;"/><asp:Literal ID="litOrgName" runat="server" Mode="Encode" /></div></a>
         <div class="top-actions">
             <a runat="server" href="~/Pages/Profile.aspx" class="user-chip" title="پروفایل من">
                 <div class="noner">

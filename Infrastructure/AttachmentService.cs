@@ -42,7 +42,7 @@ namespace MeetingMinutes.Infrastructure
             { ".png", "image/png" },
             { ".tif", "image/tiff" }, { ".tiff", "image/tiff" }
         };
-        private const long MaxSizeBytes = 15 * 1024 * 1024; // ۱۵ مگابایت برای هر فایل
+        private const long MaxSizeBytes = 15 * 1024 * 1024;
 
         public static string AllowedExtensionsText
         {

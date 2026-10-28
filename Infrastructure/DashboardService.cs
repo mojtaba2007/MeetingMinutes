@@ -2,7 +2,6 @@
 
 namespace MeetingMinutes.Infrastructure
 {
-    /// <summary>کوئری‌های داشبورد. همه یک‌بار در Default.aspx اجرا می‌شوند؛ نیازی به کش نیست چون دیتابیس کوچک است.</summary>
     public static class DashboardService
     {
         public static DataRow Stats(bool canSeeDrafts)

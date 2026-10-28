@@ -62,7 +62,7 @@ namespace MeetingMinutes.Infrastructure
                 Response.Redirect("~/Pages/Default.aspx?denied=1", true);
         }
 
-        /// <summary>HTML یک پیام هشدار (متن به‌صورت امن Encode می‌شود). cssClass: alert-error / alert-success / alert-info</summary>
+        /// <summary> alert-error / alert-success / alert-info</summary>
         protected static string Alert(string text, string cssClass)
         {
             return "<div class=\"alert " + cssClass + "\">" + HttpUtility.HtmlEncode(text) + "</div>";

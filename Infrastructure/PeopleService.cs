@@ -128,7 +128,7 @@ namespace MeetingMinutes.Infrastructure
             return true;
         }
 
-        // ---------- نام‌های مستعار ----------
+        // نام‌های مستعار
         public static DataTable Aliases(int personId)
         {
             return Db.Query("SELECT AliasId, AliasName FROM dbo.PersonAliases WHERE PersonId = @id ORDER BY AliasName", Db.P("@id", personId));
@@ -153,7 +153,6 @@ namespace MeetingMinutes.Infrastructure
             Db.Execute("DELETE dbo.PersonAliases WHERE AliasId = @a AND PersonId = @p", Db.P("@a", aliasId), Db.P("@p", personId));
         }
 
-        // ---------- کمکی ----------
         /// <summary>اگر این کلید نرمال‌شده قبلاً نامِ اصلی یا مستعارِ فرد دیگری باشد، نام آن فرد را برمی‌گرداند.</summary>
         private static string FindNameOwner(string normalized, int? exceptPersonId)
         {
@@ -173,7 +172,7 @@ namespace MeetingMinutes.Infrastructure
             return (int)Db.Scalar("SELECT COUNT(*) FROM dbo.Users WHERE PersonId = @id AND IsActive = 1", Db.P("@id", personId)) > 0;
         }
 
-        // ---------- حذف ----------
+        // حذف
         /// <summary>حذف واقعی فقط وقتی مجاز است که این فرد در هیچ‌جای دیگر دیتابیس استفاده نشده باشد؛
         /// در غیر این صورت دلیل (یا دلایل) دقیق را برمی‌گرداند تا کاربر به‌جای حذف، غیرفعالش کند.</summary>
         public static bool CanDelete(int personId, out string reason)

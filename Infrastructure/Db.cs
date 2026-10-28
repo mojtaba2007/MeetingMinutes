@@ -5,18 +5,19 @@ using System.Data.SqlClient;
 
 namespace MeetingMinutes.Infrastructure
 {
-    /// <summary>
-    /// دسترسی ساده به SQL Server با ADO.NET. همه‌ی کوئری‌ها باید پارامتری باشند (Db.P).
-    /// </summary>
     public static class Db
     {
         private static string ConnStr
         {
             get
             {
+                var environmentConnectionString = Environment.GetEnvironmentVariable("MEETINGMINUTES_CONNECTION_STRING");
+                if (!string.IsNullOrWhiteSpace(environmentConnectionString))
+                    return environmentConnectionString;
+
                 var cs = ConfigurationManager.ConnectionStrings["MeetingDb"];
                 if (cs == null)
-                    throw new ConfigurationErrorsException("رشته‌ی اتصال MeetingDb در Web.config تعریف نشده است.");
+                    throw new ConfigurationErrorsException("رشته‌ی اتصال را در متغیر محیطی MEETINGMINUTES_CONNECTION_STRING یا بخش MeetingDb در Web.config تعریف کنید.");
                 return cs.ConnectionString;
             }
         }

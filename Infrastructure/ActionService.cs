@@ -98,7 +98,7 @@ namespace MeetingMinutes.Infrastructure
             return Db.Query("SELECT StatusId, Title, IsClosed FROM dbo.ActionStatuses ORDER BY StatusId");
         }
 
-        /// <summary>جلسه‌های اخیر برای انتخاب «بررسی‌شده در جلسه‌ی ...».</summary>
+        /// <summary>جلسه‌های اخیر برای انتخاب بررسی‌شده در جلسه‌ی...</summary>
         public static DataTable RecentMeetings(bool canSeeDrafts, int take)
         {
             return Db.Query(
@@ -129,7 +129,7 @@ namespace MeetingMinutes.Infrastructure
                   ORDER BY f.FollowUpDate DESC, f.FollowUpId DESC", Db.P("@a", actionId));
         }
 
-        /// <summary>آیا این کاربر می‌تواند برای این اقدام پیگیری ثبت کند؟ (مدیر و دبیر: همه؛ عضو: فقط اقدام‌های خودش)</summary>
+        /// <summary>کاربر می‌تواند برای این اقدام پیگیری ثبت کند؟ مدیر و دبیر: همه؛ عضو: فقط اقدام‌های خودش</summary>
         public static bool CanFollow(bool isEditor, int? userPersonId, object responsiblePersonId)
         {
             if (isEditor) return true;
